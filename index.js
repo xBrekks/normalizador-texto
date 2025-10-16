@@ -1,21 +1,34 @@
-// Importamos el módulo 'fs' para trabajar con archivos
 const fs = require('fs');
 const diacritics = require('diacritics');
-// Leemos el contenido del archivo 'entrada.txt'
-// 'utf-8' es la codificación para que lea correctamente acentos y caracteres especiales
+const axios = require('axios'); // Nueva importación
+// Función principal asíncrona
+async function procesarTexto() {
+try {
+// 1. Leer y normalizar el texto (lógica que ya tenías)
+
 const textoEntrada = fs.readFileSync('entrada.txt', 'utf-8');
-// // Mostramos el contenido en la consola para verificar
-console.log('Texto original:', textoEntrada);
-// // Convertimos todo el texto a minúsculas
-// const textoProcesado = textoEntrada.toLowerCase();
-// console.log('Texto en minúsculas:', textoProcesado);
-// Aplicamos ambas transformaciones en cadena
+
 const textoNormalizado =
 diacritics.remove(textoEntrada.toLowerCase());
-console.log('Texto normalizado (sin tildes y en minúsculas):');
-console.log(textoNormalizado);
-
-// Guardamos el texto normalizado en un nuevo archivo llamado
-'salida.txt'
-fs.writeFileSync('salida.txt', textoNormalizado);
-console.log('\n¡ El texto modificado se ha guardado en “salida.txt”');
+console.log('Texto normalizado:', textoNormalizado);
+// 2. Preparar los datos para enviar a la API
+const datosParaAPI = {
+title: 'Texto desde script Node.js',
+body: textoNormalizado,
+userId: 1, // Un dato de ejemplo
+};
+// 3. Realizar la petición HTTP POST a una API de prueba
+console.log('\nEnviando texto a la API de prueba...');
+const respuestaAPI = await
+axios.post('https://jsonplaceholder.typicode.com/posts',
+datosParaAPI);
+// 4. Mostrar la respuesta de la API en la consola
+console.log('¡Respuesta recibida de la API!');
+console.log('Status:', respuestaAPI.status);
+console.log('Datos devueltos:', respuestaAPI.data);
+} catch (error) {
+console.error('Ha ocurrido un error:', error.message);
+}
+}
+// Ejecutar la función principal
+procesarTexto();
