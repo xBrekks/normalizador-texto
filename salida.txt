@@ -1,1 +1,3 @@
-"Why is the sky blue? Simplified explanation in less than 20 words: Scattering of sunlight by molecules and particles."
+- **Éxito inicial:** Ventas del HydroBot superaron expectativas, alcanzando un crecimiento del 150 % en el primer trimestre gracias a una campaña viral y apoyo de influencers tecnológicos.  
+- **Problema crítico:** La duración de la batería ha provocado que el 15 % de los clientes devuelvan el producto, generando inquietud sobre la experiencia de uso.  
+- **Acción correctiva:** El equipo de ingeniería está desarrollando una versión revisada (v1.1) para mejorar el hardware y se espera su disponibilidad en el próximo trimestre.
